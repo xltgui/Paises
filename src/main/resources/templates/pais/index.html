@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Países</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Lista de Países</h1>
+
+<form th:action="@{/paises}" method="get">
+    <div>
+        <label for="continente">Filtrar por Continente:</label>
+        <select id="continente" name="continente" onchange="this.form.submit()">
+            <option value="">Todos</option>
+            <option th:each="continente : ${continentes}"
+                    th:value="${continente}"
+                    th:text="${continente}"
+                    th:selected="${continente == continenteSelecionado}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="ordenacao">Ordenar por:</label>
+        <select id="ordenacao" name="ordenacao" onchange="this.form.submit()">
+            <option value="">Padrão</option>
+            <option value="nome" th:selected="${ordenacaoSelecionada == 'nome'}">Nome</option>
+            <option value="capital" th:selected="${ordenacaoSelecionada == 'capital'}">Capital</option>
+            <option value="continente" th:selected="${ordenacaoSelecionada == 'continente'}">Continente</option>
+        </select>
+    </div>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Bandeira</th>
+        <th>Nome</th>
+        <th>Capital</th>
+        <th>Continente</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pais : ${listaPaises}">
+        <td><img th:src="${pais.urlBandeira}" alt="Bandeira" width="50"></td>
+        <td th:text="${pais.nome}"></td>
+        <td th:text="${pais.capital}"></td>
+        <td th:text="${pais.continente}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
