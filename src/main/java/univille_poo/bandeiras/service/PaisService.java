@@ -28,7 +28,7 @@ public class PaisService {
 
     public List<Pais> listar() {
         return listaDePaises.stream()
-                .peek(pais -> pais.setUrlBandeira(getCodigoBandeira(pais.getNome())))
+                .peek(pais -> pais.setUrlBandeira("https://flagcdn.com/w320/" + getCodigoBandeira(pais.getNome()) + ".png"))
                 .collect(Collectors.toList());
     }
 
