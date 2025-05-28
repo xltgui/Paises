@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${acao == 'novo' ? 'Adicionar Novo País' : 'Editar País'}"></title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 th:text="${acao == 'novo' ? 'Adicionar Novo País' : 'Editar País'}"></h1>
+
+<form th:action="@{/paises/salvar}" th:object="${pais}" method="post">
+  <input type="hidden" th:field="*{id}" />
+
+  <div>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" th:field="*{nome}" required />
+  </div>
+  <div>
+    <label for="capital">Capital:</label>
+    <input type="text" id="capital" th:field="*{capital}" required />
+  </div>
+  <div>
+    <label for="continente">Continente:</label>
+    <input type="text" id="continente" th:field="*{continente}" required />
+  </div>
+
+  <div>
+    <button type="submit">Salvar</button>
+    <a th:href="@{/paises}">Cancelar</a>
+  </div>
+</form>
+</body>
+</html>

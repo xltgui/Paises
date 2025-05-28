@@ -7,6 +7,10 @@
 <body>
 <h1>Lista de Países</h1>
 
+<div th:if="${mensagem}" class="mensagem-sucesso">
+    <p th:text="${mensagem}"></p>
+</div>
+
 <form th:action="@{/paises}" method="get">
     <div>
         <label for="continente">Filtrar por Continente:</label>
@@ -30,6 +34,8 @@
     </div>
 </form>
 
+<p><a th:href="@{/paises/novo}">Adicionar Novo País</a></p>
+
 <table>
     <thead>
     <tr>
@@ -37,7 +43,7 @@
         <th>Nome</th>
         <th>Capital</th>
         <th>Continente</th>
-    </tr>
+        <th>Ações</th> </tr>
     </thead>
     <tbody>
     <tr th:each="pais : ${listaPaises}">
@@ -45,6 +51,11 @@
         <td th:text="${pais.nome}"></td>
         <td th:text="${pais.capital}"></td>
         <td th:text="${pais.continente}"></td>
+        <td>
+            <a th:href="@{/paises/editar/{id}(id=${pais.id})}">Editar</a> |
+            <a th:href="@{/paises/excluir/{id}(id=${pais.id})}"
+               onclick="return confirm('Tem certeza que deseja excluir este país?')">Excluir</a>
+        </td>
     </tr>
     </tbody>
 </table>
