@@ -33,13 +33,6 @@ public class PaisService {
 
     public PaisService(PaisRepository paisRepository) {
         this.paisRepository = paisRepository;
-        listaDePaises.add(new Pais("Brasil", "Brasília", "América do Sul"));
-        listaDePaises.add(new Pais("Argentina", "Buenos Aires", "América do Sul"));
-        listaDePaises.add(new Pais("Japão", "Tóquio", "Ásia"));
-        listaDePaises.add(new Pais("Alemanha", "Berlim", "Europa"));
-        listaDePaises.add(new Pais("Canadá", "Ottawa", "América do Norte"));
-        listaDePaises.add(new Pais("Austrália", "Camberra", "Oceania"));
-        listaDePaises.add(new Pais("Egito", "Cairo", "África"));
     }
 
     public List<Pais> listar() {
